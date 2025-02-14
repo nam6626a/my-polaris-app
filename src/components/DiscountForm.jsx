@@ -144,7 +144,7 @@ export default function DiscountForm() {
 
           <button
             type="button"
-            className="flex bg-red-500 w-9/12 justify-center items-center mt-3 mx-auto mx-9 h-9 text-white rounded-lg"
+            className="add-option-button flex bg-red-500 w-9/12 justify-center items-center mt-3 mx-auto mx-9 h-9 text-white rounded-lg gap-2"
             onClick={() =>
               append({
                 title: `Option ${fields.length + 1}`,
@@ -157,7 +157,10 @@ export default function DiscountForm() {
             }
             primary
           >
-            Add option
+            <InlineStack align="center">
+              <Icon source={PlusIcon} />
+              <span>Add option</span>
+            </InlineStack>
           </button>
     </Card>
 
