@@ -51,7 +51,7 @@ export default function DiscountForm() {
     console.log("Valid form submitted:", data);
     alert("Form submitted successfully!");
   };
-
+  console.log(errors.campaignName);
   return (
 <Page title="Create volume discount">
   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-4">
@@ -63,8 +63,10 @@ export default function DiscountForm() {
           name="campaignName"
           rules={{ required: "Campaign is required" }}
           render={({ field }) => (
+            //  console.log("Campaign Name Value:", field.name);
+            //  debugger; // Dừng execution tại đây để debug
             <TextField label="Campaign" {...field} error={errors.campaignName?.message} className="w-full" />
-          )}
+          )}           
         />
         <Controller
           control={control}
@@ -94,7 +96,7 @@ export default function DiscountForm() {
               control={control}
               name={`options.${index}.title`}
               rules={{ required: "Title is required" }}
-              render={({ field }) => <TextField label="Title" {...field} className="w-full" />}
+              render={({ field }) => <TextField label="Title" {...field} className="w-full" error={errors.options?.[index]?.title?.message}/>}
             />
             <Controller
               control={control}
@@ -190,4 +192,5 @@ export default function DiscountForm() {
   </form>
 </Page>
   );
+  
 }
